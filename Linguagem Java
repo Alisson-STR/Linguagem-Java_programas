@@ -1,0 +1,239 @@
+Algoritmos e Estruturas de Dados IV - Linguagem Java
+```java
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Olá, Mundo!");
+    }
+}
+```
+// Explicação
+/* Classe: HelloWorld é o nome da classe, que deve corresponder ao nome do arquivo (HelloWorld.java). */
+/* Método ‘main’: Ponto de entrada do programa, onde a execução começa. */
+/* Saída: System.out.println exibe a mensagem "Olá, Mundo!" no console. */
+//Como Executar
+/* Salve o código em um arquivo chamado HelloWorld.java. */
+/* Compile com o comando: javac HelloWorld.java. */
+/* Execute com: java HelloWorld. */
+// A saída será: Olá, Mundo!.
+
+
+JavaBasicPrograms.java
+// Programa 1: Verificar se um número é par ou ímpar
+class EvenOdd {
+    public static void main(String[] args) {
+        int num = 10;
+        if (num % 2 == 0) {
+            System.out.println(num + " é par");
+        } else {
+            System.out.println(num + " é ímpar");
+        }
+    }
+}
+
+// Programa 2: Inverter uma string
+class ReverseString {
+    public static void main(String[] args) {
+        String original = "Hello World";
+        StringBuilder reversed = new StringBuilder();
+        for (int i = original.length() - 1; i >= 0; i--) {
+            reversed.append(original.charAt(i));
+        }
+        System.out.println("String invertida: " + reversed);
+    }
+}
+
+// Programa 3: Somar elementos de um array
+class ArraySum {
+    public static void main(String[] args) {
+        int[] numbers = {1, 2, 3, 4, 5};
+        int sum = 0;
+        for (int num : numbers) {
+            sum += num;
+        }
+        System.out.println("Soma do array: " + sum);
+    }
+}
+
+// Programa 4: Encontrar o maior elemento em um array
+class FindMax {
+    public static void main(String[] args) {
+        int[] numbers = {23, 45, 12, 67, 8};
+        int max = numbers[0];
+        for (int i = 1; i < numbers.length; i++) {
+            if (numbers[i] > max) {
+                max = numbers[i];
+            }
+        }
+        System.out.println("Maior elemento: " + max);
+    }
+}
+
+// Programa 5: Implementação de uma pilha simples
+class Stack {
+    int maxSize = 5;
+    int[] stackArray = new int[maxSize];
+    int top = -1;
+
+    void push(int value) {
+        if (top < maxSize - 1) {
+            stackArray[++top] = value;
+            System.out.println("Empilhou: " + value);
+        } else {
+            System.out.println("Pilha cheia!");
+        }
+    }
+
+    int pop() {
+        if (top >= 0) {
+            return stackArray[top--];
+        }
+        System.out.println("Pilha vazia!");
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        Stack stack = new Stack();
+        stack.push(1);
+        stack.push(2);
+        System.out.println("Desempilhou: " + stack.pop());
+    }
+}
+
+// Programa 6: Implementação de uma fila simples
+class Queue {
+    int maxSize = 5;
+    int[] queueArray = new int[maxSize];
+    int front = 0;
+    int rear = -1;
+    int currentSize = 0;
+
+    void enqueue(int value) {
+        if (currentSize < maxSize) {
+            queueArray[++rear] = value;
+            currentSize++;
+            System.out.println("Enfileirou: " + value);
+        } else {
+            System.out.println("Fila cheia!");
+        }
+    }
+
+    int dequeue() {
+        if (currentSize > 0) {
+            currentSize--;
+            return queueArray[front++];
+        }
+        System.out.println("Fila vazia!");
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        Queue queue = new Queue();
+        queue.enqueue(1);
+        queue.enqueue(2);
+        System.out.println("Desenfileirou: " + queue.dequeue());
+    }
+}
+
+// Programa 7: Busca linear em um array
+class LinearSearch {
+    public static void main(String[] args) {
+        int[] numbers = {5, 2, 8, 12, 1};
+        int target = 8;
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] == target) {
+                System.out.println("Elemento " + target + " encontrado na posição " + i);
+                return;
+            }
+        }
+        System.out.println("Elemento " + target + " não encontrado");
+    }
+}
+
+// Programa 8: Ordenação por bolha (Bubble Sort)
+class BubbleSort {
+    public static void main(String[] args) {
+        int[] numbers = {64, 34, 25, 12, 22};
+        int n = numbers.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (numbers[j] > numbers[j + 1]) {
+                    int temp = numbers[j];
+                    numbers[j] = numbers[j + 1];
+                    numbers[j + 1] = temp;
+                }
+            }
+        }
+        System.out.print("Array ordenado: ");
+        for (int num : numbers) {
+            System.out.print(num + " ");
+        }
+    }
+}
+
+// Programa 9: Fatorial de um número
+class Factorial {
+    public static void main(String[] args) {
+        int num = 5;
+        long factorial = 1;
+        for (int i = 1; i <= num; i++) {
+            factorial *= i;
+        }
+        System.out.println("Fatorial de " + num + " é " + factorial);
+    }
+}
+
+// Programa 10: Lista encadeada simples
+class LinkedList {
+    class Node {
+        int data;
+        Node next;
+        Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    Node head;
+
+    void insert(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node current = head;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+    }
+
+    void display() {
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.data + " ");
+            current = current.next;
+        }
+    }
+
+    public static void main(String[] args) {
+        LinkedList list = new LinkedList();
+        list.insert(1);
+        list.insert(2);
+        list.insert(3);
+        System.out.print("Lista encadeada: ");
+        list.display();
+    }
+}
+
+// Explicação dos Programas;
+Verificar par ou ímpar: Usa o operador módulo (%) para determinar se um número é divisível por 2.
+Inverter uma string: Itera pelos caracteres de uma string de trás para frente usando StringBuilder.
+Somar elementos de um array: Demonstra iteração em um array com for-each para calcular a soma.
+Encontrar o maior elemento: Compara cada elemento de um array para encontrar o maior valor.
+Pilha simples: Implementa operações básicas de pilha (push e pop) usando um array.
+Fila simples: Implementa operações de fila (enqueue e dequeue) usando um array.
+Busca linear: Procura um elemento em um array comparando cada item sequencialmente.
+Ordenação por bolha: Ordena um array comparando e trocando elementos adjacentes.
+Fatorial: Calcula o fatorial de um número usando um loop iterativo.
+Lista encadeada: Implementa uma lista encadeada simples com inserção e exibição de elementos.
